@@ -1,6 +1,10 @@
+"use client"
 import './globals.css'
 import type { Metadata } from 'next'
+import { ColorProvider } from '../contexts/ColorContext.';
+import { ClickProvider } from '../contexts/ClickContext';
 import { Inter } from 'next/font/google'
+import { AnimatePresence } from "framer-motion"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <AnimatePresence>
+      <ColorProvider>
+      <ClickProvider>
       <body className={inter.className}>{children}</body>
+      </ClickProvider>
+    </ColorProvider>
+    </AnimatePresence>
     </html>
   )
 }

@@ -1,7 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+"use client"
+import React, {useContext, useEffect, useRef } from 'react';
+import { ColorContext } from '../contexts/ColorContext.'
 
 const Matrix = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  
+  let { color } = useContext(ColorContext);
+
 
   class Symbol {
     characters =
@@ -12,20 +17,25 @@ const Matrix = () => {
     text: string;
     canvasHeight: number;
 
+
     constructor(x: number, y: number, fontSize: number, canvasHeight: number) {
       this.x = x;
       this.y = y;
       this.fontSize = fontSize;
       this.text = '';
       this.canvasHeight = canvasHeight;
+      
     }
 
     draw(context: CanvasRenderingContext2D) {
       this.text = this.characters.charAt(Math.floor(Math.random() * this.characters.length));
 
-      context.fillStyle = 'green';
+    
+     
+      context.fillStyle = color;
+
       context.fillText(this.text, this.x * this.fontSize, this.y * this.fontSize);
-      if (this.y * this.fontSize > this.canvasHeight && Math.random() > 0.99) {
+      if (this.y * this.fontSize > this.canvasHeight && Math.random() > 0.996) {
         this.y = 0;
       } else {
         this.y += 1;
@@ -58,7 +68,7 @@ const Matrix = () => {
     public resize(width:number,height:number){
         this.canvasWidth = width;
         this.canvasHeight = height;
-        this.columns = this.canvasWidth/13;
+        this.columns = this.canvasWidth/this.fontSize;
         this.symbols = [];
         this.initialize();
     }
@@ -68,6 +78,7 @@ const Matrix = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
+    //  console.log("changia" +color) ;
 
     if (canvas && ctx) {
       canvas.width = window.innerWidth;
@@ -98,10 +109,18 @@ const Matrix = () => {
 
 
     }
-  }, []);
+  }, [color]);
 
 
+
+  useEffect(() => {
+    console.log('Component re-rendered with color:', color);
+    
+  }, [color]);
   return <canvas ref={canvasRef} />;
 };
+
+
+
 
 export default Matrix;
