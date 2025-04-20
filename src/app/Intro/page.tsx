@@ -1,73 +1,105 @@
 "use client"
-import {motion as m} from "framer-motion"
+import { motion as m } from "framer-motion"
 import Navbar from "@/components/Navbar"
-import { AnimatePresence } from "framer-motion"
-import { usePathname } from "next/navigation";
 import PageWrapper from "@/components/PageWrapper"
-// import Matrix from "@/components/Matrix"
+import AppConstants from "@/constants/AppConstants"
+import TypingEffect from "@/utilities/TypingEffect"
+import SkillCategory from "@/components/SkillCategoryContainer/SkillCategory"
+import { useState } from "react"
+import ProjectCard from "@/components/ProjectContainer/ProjectCard"
+import Matrix from "@/components/Matrix"
+
 const Intro = () => {
+  const [showSkills, setShowSkills] = useState(true)
+
   return (
-    <PageWrapper >
-    <m.div className="max-w-screen-xl mx-auto"
-    initial={{x:"-120%", opacity:0}}
-    animate={{x:"0%",opacity:1}}
-    transition={{duration:0.45, ease:"easeInOut"}}
-  
-    >
-    {/* <Matrix></Matrix> */}
-    <Navbar></Navbar>
-  <div className=" md:flex" >
-                <div className="flex p-10 flex-col items-center justify-center md:w-1/2 w-full md:h-screen">
-                  <div className="mb-4">
-                    <h1 className="font-bold text-4xl">Unleashing creativity within the <span className=" text-green-700">digital realm</span></h1>
-                    </div>
+    <PageWrapper>
+     
+      <m.div
+        className="max-w-screen-xl mx-auto px-4 p-4"
+        initial={{ x: "-120%", opacity: 0 }}
+        animate={{ x: "0%", opacity: 1 }}
+        transition={{ duration: 0.45, ease: "easeInOut" }}
+      >
+        <Navbar />
 
-                    <div className="text-lg ">
-                    Welcome to my realm, where creativity transcends the boundaries of the mundane, and where I, <span className=" text-green-600">Saurabh Aggarwal</span>, bridge the gap between imagination and reality.
-                    </div>
-                </div>
-                {/* <div className='md:w-1/2  flex flex-col items-center md:justify-center md:h-screen ' >
-                <div className=" text-black md:w-96  w-72 mt-8 sm:mt-0">
-                    <h1 className="text-4xl my-2">Sign In</h1>
-                    <p className="my-2 text-gray-500">Please enter your details to get started</p>
-                    <div className='flex justify-between my-2'>
-                        <div className='flex'>
-                        </div>
+        {/* Intro + Skills Section */}
+        <div className="md:flex flex-wrap pt-24 md:pt-32">
+          {/* Left Panel */}
+          <div className="flex flex-col  md:w-1/2 w-full px-6 mb-12 md:mb-0">
+            <TypingEffect typeSpeed={AppConstants.TYPE_SPEED}>
+              <div className="mb-4">
+                <h1 className="font-bold text-4xl">
+                  {AppConstants.WELCOME_HEADING_H1[0]}{" "}
+                  <span className="text-green-700">{AppConstants.WELCOME_HEADING_H1[1]}</span>
+                </h1>
+              </div>
 
-                        <div className=''>
-                            <button  className='md:w-44 md:h-[42px] bg-[#FF96A5] p-1 w-32 rounded-sm'>
-                                Facebook
-                            </button>
-                        </div>
-                    </div>
-                    <div className="flex items-center">
-                    <hr className='bg-pink-300 md:w-[7.4rem] w-[4.4rem] rounded-sm h-px'/>
-                    <span className='mx-3 text-pink-500'>or continue with</span>
-                    <hr className='bg-pink-300 md:w-[7.4rem] w-[4.4rem] rounded-sm h-px'/>
-                    </div>
-                    <label htmlFor="email" className='my-2 '>Email Address</label> <span className="text-pink-600">*</span> 
-                    <br />  
-                    <input type="email" id="email" name="email" placeholder="Your Email" className='my-2 text-pink-600 p-2 w-full border-2 border-pink-400 rounded-sm outline-none ring-0 placeholder-pink-400'required />
-                    <br />
-                    <label htmlFor="password" className='my-2'>Password <span className="text-pink-600">*</span></label>
-                    <br />
-                    <input type="password" name="password" id="password" placeholder="********" className='my-2 text-pink-600 p-2 w-full border-2 border-pink-400 rounded-sm outline-none 'required/>
-                    <br />
-                    <div className='flex justify-between my-2'>
-                    <div className='flex items-center'>
-                    <input type="checkbox" name="rememberMe" className='accent-pink-500 ' defaultChecked id="rememberMe" />
-                    <label htmlFor="rememberMe" className='text-xs ml-1 text-pink-500' >Remember me</label>
-                    </div>
-                    </div>
-                    <div>
-                        <button className='my-2 h-[47px] w-full bg-[#FF597B] text-white rounded-sm'>Sign In</button>
-                    </div>
+              <p className="text-lg leading-relaxed">
+                {AppConstants.WELCOME_MESSAGE_P1}{" "}
+                <span className="text-green-600">{AppConstants.AUTHOR_NAME}</span>
+                {AppConstants.WELCOME_MESSAGE_P2}
+              </p>
+            </TypingEffect>
+          </div>
 
-                    </div>
-                </div> */}
-            </div>
+          {/* Right Panel */}
+          
+          <div className="flex flex-col md:w-1/2 w-full px-6">
+            
+            {showSkills && (
+              <>
+                <m.h2
+                
+                  className="text-3xl font-bold mb-6 text-center"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 5.5 }}
+                >
+                  <span className="text-white">Skill </span>
+                  <span className="text-green-400">Gems 💎</span>
+                </m.h2>
 
-    </m.div>
+                <m.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+                       initial={{ opacity: 0, y: -20 }}
+                       animate={{ opacity: 1, y: 0 }}
+                       transition={{ duration: 0.6, ease: "easeOut", delay: 5.5 }}>
+                  
+                  {AppConstants.categories.map((cat) => (
+                    <SkillCategory key={cat.title} title={cat.title} skills={cat.skills} />
+                  ))}
+                </m.div>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Project Vault Section */}
+        <m.div
+          className="w-full flex flex-col items-center px-6 mt-24"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut",delay: 5.5 }}
+        >
+          <h2 className="text-3xl font-bold text-center mb-10">
+            <span className="text-white">Project </span>
+            <span className="text-green-400">Vault 🚀</span>
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-6xl">
+            {AppConstants.projects.map((proj) => (
+              <ProjectCard
+                key={proj.title}
+                title={proj.title}
+                description={proj.description}
+                tech={proj.tech}
+                link={proj.link}
+              />
+            ))}
+           
+          </div>
+        </m.div>
+      </m.div>
     </PageWrapper>
   )
 }

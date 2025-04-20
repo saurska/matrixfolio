@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div className="flex justify-between mt-6">
 
-    <Link href="/home" className="font-semi-bold">
+    <Link href="/home" className="font-semi-bold p-3">
       MatrixFolio 
       </Link>
       {/* <Link href='/home'>

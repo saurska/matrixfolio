@@ -10,7 +10,7 @@ interface SocialContainerComponentProps{
 
 const SocialContainer:React.FC<SocialContainerComponentProps> = () => {
   return (
-    <div className='w-36'>
+    <div className='w-48'>
     <div className='flex justify-between'>
         <Social slink='https://github.com/saurska'  icon={GitHub}></Social>
         <Social slink='https://www.linkedin.com/in/saurska/' icon={Linkedin}></Social>

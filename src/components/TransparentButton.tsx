@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import {motion} from "framer-motion";
 
-interface ButtonComponentProps{
-    bgcolor :string
+interface TransparentButtonComponentProps{
+    border_color :string
     text :string
     onClickHandler :() =>void
 }
 
 
-const Button:React.FC<ButtonComponentProps> = ({bgcolor,text,onClickHandler})=> {
+const TransparentButton:React.FC<TransparentButtonComponentProps> = ({border_color,text,onClickHandler})=> {
     
     return(
         <motion.div initial=
@@ -16,7 +16,7 @@ const Button:React.FC<ButtonComponentProps> = ({bgcolor,text,onClickHandler})=> 
         animate = {{opacity:1}}
         transition={{duration:0.5}}
         >
-             <button onClick={onClickHandler} className={`${bgcolor} text-xl p-4  my-3 rounded-lg font-medium` } >
+             <button onClick={onClickHandler} className={`${border_color} text-xl p-4  border-2 my-5 rounded-none font-medium` } >
                 {text}
             </button>
         </motion.div>
@@ -25,4 +25,4 @@ const Button:React.FC<ButtonComponentProps> = ({bgcolor,text,onClickHandler})=> 
 
 }
 
-export default Button  
+export default TransparentButton  

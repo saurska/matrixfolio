@@ -21,7 +21,7 @@ const CircleButton:React.FC<CircleButtonComponentProps> = ({bgcolor,color}) => {
 
   const hideIt = () =>{
     if(color=="blue")
-    setClick(true);
+      router.push('/TheOtherSide')
     else if(color =="red"){
         router.push('/Intro')
     }
