@@ -9,13 +9,12 @@ import AnimatedText from "@/components/AnimatedText";
 import { ClickContext } from "@/contexts/ClickContext";
 import { ButtonProvider } from '../../contexts/ButtonContext';
 import ShowOnClick from "@/components/ShowOnClick";
-const home = ()=>{
+import AppConstants from "@/constants/AppConstants";
+const Home = ()=>{
 
 
     const {clicked} = useContext(ClickContext); // Context wala clicked
     const [click, setClick] = useState(false);
-    const color1 ="bg-red-800";
-    const color2 ="bg-blue-800";
     const  handleClick = ()=>{
         console.log(click);
         if(!clicked)
@@ -39,8 +38,8 @@ const home = ()=>{
             <Button onClickHandler={handleClick}  bgcolor="bg-green-950 " text="Matrix welcomes you"></Button>
             <div>
             <div className="flex justify-between">
-            <CircleButton  bgcolor={color1} color = "red"></CircleButton>
-            <CircleButton bgcolor={color2} color = "blue"></CircleButton>
+            <CircleButton  bgcolor={AppConstants.RED_VAR_COLOR} color = {AppConstants.RED}></CircleButton>
+            <CircleButton bgcolor={AppConstants.BLUE_VAR_COLOR} color = {AppConstants.BLUE}></CircleButton>
 
             </div>
             </div>
@@ -59,4 +58,4 @@ const home = ()=>{
     )
 }
 
-export default home;
+export default Home;

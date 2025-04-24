@@ -3,7 +3,7 @@ import {GitHub} from "react-feather";
 import SocialContainer from "./SocialContainer/SocialContainer"
 const Navbar = () => {
   return (
-    <div className="flex justify-between mt-6">
+    <div className="flex justify-between mt-6 relative z-10">
 
     <Link href="/home" className="font-semi-bold p-3">
       MatrixFolio 

@@ -1,10 +1,11 @@
+
 "use client"
 import React, {useContext, useEffect, useRef } from 'react';
-import { ColorContext } from '../contexts/ColorContext.'
+import { ColorContext } from '../contexts/ColorContext'
 
 const Matrix = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  
+ // @ts-ignore
   let { color } = useContext(ColorContext);
 
 
@@ -86,10 +87,12 @@ const Matrix = () => {
 
       const effect = new Effect(canvas.width, canvas.height);
 
+      // @ts-ignore
       function animate() {
         if (!ctx) return;
 
         ctx.fillStyle = 'rgba(1,1,0,0.05)';
+        // @ts-ignore
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.font = effect.fontSize + 'px monospace';
         effect.symbols.forEach((symbol) => symbol.draw(ctx));

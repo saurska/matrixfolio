@@ -1,7 +1,7 @@
 "use client"
 import './globals.css'
 import type { Metadata } from 'next'
-import { ColorProvider } from '../contexts/ColorContext.';
+import { ColorProvider } from '../contexts/ColorContext';
 import { ClickProvider } from '../contexts/ClickContext';
 import { Inter } from 'next/font/google'
 

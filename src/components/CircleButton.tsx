@@ -3,6 +3,7 @@ import {easeOut, motion} from "framer-motion"
 import {ButtonContext} from "../contexts/ButtonContext"
 import {ClickContext} from "../contexts/ClickContext"
 import { useRouter } from 'next/navigation';
+import AppConstants from '@/constants/AppConstants';
 
 // import { ColorContext } from '../contexts/ColorContext.'
 
@@ -21,9 +22,9 @@ const CircleButton:React.FC<CircleButtonComponentProps> = ({bgcolor,color}) => {
 
   const hideIt = () =>{
     if(color=="blue")
-      router.push('/TheOtherSide')
+      router.push(AppConstants.BLUE_PILL_URL)
     else if(color =="red"){
-        router.push('/Intro')
+        router.push(AppConstants.RED_PILL_URL)
     }
   }
 

@@ -7,6 +7,11 @@ const AppConstants = {
     TYPE_SPEED :13,
     SAURSKA_IMG :"/Saurska.png",
 
+    RED_VAR_COLOR: "bg-red-800",
+    BLUE_VAR_COLOR : "bg-blue-800",
+    RED : "red",
+    BLUE : "blue",
+
     badges : [
       { image: "/c++.png", title: "CPP" ,description :"C++ was the red pill that introduced me to programming. It taught me memory management, object-oriented design, and algorithmic thinking. Exploring pointers, data structures, and performance optimization shaped the way I approach software development today."},
       { image: "/spring.png", title: "Spring Boot" ,description :"Spring Boot was my entry into professional backend development. As part of my job, I’ve built numerous APIs with it, appreciating its simplicity, speed, and powerful features. From dependency injection to RESTful services, it has made backend development seamless and efficient—an amazing experience so far."},
@@ -26,7 +31,10 @@ const AppConstants = {
       { title: "Concepts", skills: ["OOPs", "REST API", "Cryptography", "Data Structures"] },
     ],
 
-
+    blogs:[
+      {title: "Are we happy enough?", link : "https://saurska.blogspot.com/2021/06/search-for-happiness.html"},
+      {title: "The Lost Childhood", link : "https://saurska.blogspot.com/2021/04/the-lost-childhood.html"},
+    ],
     projects : [
       {
         title: "MDM Scheduler",
@@ -64,6 +72,28 @@ const AppConstants = {
         description: "Java-based service that detects and masks PII data in complex JSON inputs based on configurable db regex patterns.",
         tech: ["Java", "Spring Boot", "Regex", "Hibernate", "SQL"],
         link: ""
+      }
+    ],
+
+    RED_PILL_URL : "/DigitalRealm",
+    BLUE_PILL_URL : "/MyReflections",
+
+    AnimatedSection : [
+      {
+        backgroundImage : "/universe-1.jpg",
+        title : "The Other Side",
+        description : "Here lie my reflections, stories, and the pieces of life that shaped me — not just by what I created, but by what quietly created me.",
+      },
+      {
+        backgroundImage : "/universe-4.jpg",
+        title : "Skygazing Euphoria",
+        description : "Space makes me feel lost and found. When I gaze at the twinkling stars, I sense a quiet connection to the cosmos. Questions rise — about time travel, black holes, and the multiverse. If there's a planetary parade, you’ll find me wondering, eyes up. Maybe you’ll join me.",
+      },
+
+      {
+        backgroundImage : "/dark-2.jpg",
+        title : "My Little Infinity",
+        description : `Words have always been my way of making sense of the world. These pieces are small glimpses into that journey... and it’s only just begun.`,
       }
     ]
   };
